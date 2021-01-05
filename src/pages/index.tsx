@@ -1,9 +1,9 @@
-import Head from 'next/head'
+import { Container} from '../styles/pages/home'
 
 export default function Home() {
   return (
-    <div>
+    <Container>
       <h1>Hello Next.js</h1>
-    </div>
+    </Container>
   )
 }
