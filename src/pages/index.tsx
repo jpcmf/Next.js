@@ -54,7 +54,7 @@ export default function Home({ recommendedProducts }: HomeProps) {
   );
 }
 
-// TODO: SERVER SIDE FETHING
+// TODO: SERVER SIDE FETCHING
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const apiUrl = process.env.API_URL + "/recommended";
   const response = await fetch(apiUrl);
