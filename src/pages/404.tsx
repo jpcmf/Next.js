@@ -1,4 +1,4 @@
-import { Container } from "../styles/pages/404";
+import { Container } from "@/styles/pages/404";
 
 export default function NotFound() {
   return (

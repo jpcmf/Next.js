@@ -1,6 +1,6 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router'
-import {Container} from '../../../styles/pages/top10'
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import { Container } from "@/styles/pages/top10";
 
 interface IProduct {
   id: string;
@@ -15,7 +15,7 @@ export default function Category({ products }: CategoryProps) {
   const router = useRouter();
 
   if (router.isFallback) {
-    return <p>Carregando...</p>
+    return <p>Carregando...</p>;
   }
 
   return (
@@ -23,17 +23,17 @@ export default function Category({ products }: CategoryProps) {
       <section>
         <h1>{router.query.slug}</h1>
         <ul>
-          {products.map(product => {
+          {products.map((product) => {
             return (
               <li key={product.id}>
                 <p>{product.title}</p>
-              </li> 
-            )
+              </li>
+            );
           })}
         </ul>
       </section>
     </Container>
-  )
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -41,19 +41,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(apiUrl);
   const categories = await response.json();
 
-  const paths = categories.map((category: { id: any; }) => {
+  const paths = categories.map((category: { id: any }) => {
     return {
-      params: { slug: category.id }
-    }
-  })
+      params: { slug: category.id },
+    };
+  });
 
   return {
     paths,
     fallback: true,
-  }
-}
+  };
+};
 
-export const getStaticProps: GetStaticProps<CategoryProps> = async (context) => {
+export const getStaticProps: GetStaticProps<CategoryProps> = async (
+  context
+) => {
   const { slug } = context.params;
 
   const apiUrl = process.env.API_URL + `/products?category_id=${slug}`;
@@ -64,7 +66,6 @@ export const getStaticProps: GetStaticProps<CategoryProps> = async (context) => 
     props: {
       products,
     },
-    revalidate: 60
-  }
-}
-
+    revalidate: 60,
+  };
+};
