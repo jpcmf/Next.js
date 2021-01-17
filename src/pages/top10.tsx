@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import { Container } from "@/styles/pages/top10";
+import SEO from "@/components/SEO";
 
 interface IProduct {
   id: string;
@@ -13,6 +14,7 @@ interface Top10Props {
 export default function TopProducts({ products }: Top10Props) {
   return (
     <Container>
+      <SEO title="Top 10 Products" />
       <section>
         <h1>Top 10</h1>
         <ul>

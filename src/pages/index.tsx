@@ -1,20 +1,21 @@
 // import { useEffect, useState } from 'react';
 import { GetServerSideProps } from "next";
 import { Container } from "@/styles/pages/home";
+import SEO from "@/components/SEO";
 
-// TODO: CLIENT SIDE FETHING
+// TODO: CLIENT SIDE FETCHING
 interface IProduct {
   id: string;
   title: string;
 }
 
-// TODO: SERVER SIDE FETHING
+// TODO: SERVER SIDE FETCHING
 interface HomeProps {
   recommendedProducts: IProduct[];
 }
 
 export default function Home({ recommendedProducts }: HomeProps) {
-  // TODO: CLIENT SIDE FETHING
+  // TODO: CLIENT SIDE FETCHING
   // const apiUrl = process.env.API_URL + '/recommended';
   // const [recommendedProducts, setRecommendedProducts] = useState<IProduct[]>([]);
 
@@ -28,6 +29,12 @@ export default function Home({ recommendedProducts }: HomeProps) {
 
   return (
     <Container>
+      <SEO
+        title="The place for Devnation!"
+        image="teste.jpg"
+        shouldExcludeTitleSuffix
+      />
+
       <h1>Hello Next.js</h1>
 
       <section>
