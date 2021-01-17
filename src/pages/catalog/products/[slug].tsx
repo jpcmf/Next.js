@@ -1,15 +1,12 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { useCallback, useState } from "react";
-import { Container } from "../../../styles/pages/home";
+import { Container } from "@/styles/pages/home";
 
-const AddToCartModal = dynamic(
-  () => import("../../../components/AddToCartModal"),
-  {
-    loading: () => <p>Loading...</p>,
-    ssr: false, //TODO: ssr false enable component load in the client-side (browser)
-  }
-);
+const AddToCartModal = dynamic(() => import("@/components/AddToCartModal"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false, //TODO: ssr false enable component load in the client-side (browser)
+});
 
 export default function Product() {
   const router = useRouter();
