@@ -1,6 +1,7 @@
 // import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
+
 import Prismic from 'prismic-javascript';
 import { Document } from 'prismic-javascript/types/documents';
 import PrismicDOM from 'prismic-dom';

@@ -2,11 +2,14 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 // import dynamic from 'next/dynamic';
-import Prismic from 'prismic-javascript';
+
+// import Prismic from 'prismic-javascript';
 import { Document } from 'prismic-javascript/types/documents';
 import PrismicDOM from 'prismic-dom';
 
 import { client } from '@/lib/prismic';
+
+import SEO from '@/components/SEO';
 
 import { Container } from '@/styles/pages/home';
 
@@ -35,25 +38,29 @@ export default function Product({ product }: ProductProps) {
 
   return (
     <Container>
-      <h1>{PrismicDOM.RichText.asText(product.data.title)}</h1>
+      <SEO title="Products" />
 
-      <img
-        src={product.data.thumbnail.url}
-        width="250"
-        alt={product.data.title}
-      />
+      <section>
+        <h1>{PrismicDOM.RichText.asText(product.data.title)}</h1>
 
-      <div
-        dangerouslySetInnerHTML={{
-          __html: PrismicDOM.RichText.asHtml(product.data.description),
-        }}
-      ></div>
+        <img
+          src={product.data.thumbnail.url}
+          width="250"
+          alt={product.data.title}
+        />
 
-      <p>Price: ${product.data.price}</p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: PrismicDOM.RichText.asHtml(product.data.description),
+          }}
+        ></div>
 
-      {/* <button onClick={handleAddToCart}>Add to cart</button> */}
+        <p>Price: ${product.data.price}</p>
 
-      {/* {isAddToCartModalVisible && <AddToCartModal />} */}
+        {/* <button onClick={handleAddToCart}>Add to cart</button> */}
+
+        {/* {isAddToCartModalVisible && <AddToCartModal />} */}
+      </section>
     </Container>
   );
 }
