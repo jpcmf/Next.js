@@ -1,6 +1,6 @@
-import { GetStaticProps } from "next";
-import { Container } from "@/styles/pages/top10";
-import SEO from "@/components/SEO";
+import { GetStaticProps } from 'next';
+import { Container } from '@/styles/pages/top10';
+import SEO from '@/components/SEO';
 
 interface IProduct {
   id: string;
@@ -14,7 +14,7 @@ interface Top10Props {
 export default function TopProducts({ products }: Top10Props) {
   return (
     <Container>
-      <SEO title="Top 10 Products" />
+      {/* <SEO title="Top 10 Products" />
       <section>
         <h1>Top 10</h1>
         <ul>
@@ -26,21 +26,21 @@ export default function TopProducts({ products }: Top10Props) {
             );
           })}
         </ul>
-      </section>
+      </section> */}
     </Container>
   );
 }
 
 // TODO: STATIC SITE GENERATION
-export const getStaticProps: GetStaticProps<Top10Props> = async (context) => {
-  const apiUrl = process.env.API_URL + "/products";
-  const response = await fetch(apiUrl);
-  const products = await response.json();
+// export const getStaticProps: GetStaticProps<Top10Props> = async (context) => {
+//   const apiUrl = process.env.API_URL + "/products";
+//   const response = await fetch(apiUrl);
+//   const products = await response.json();
 
-  return {
-    props: {
-      products,
-    },
-    revalidate: 60,
-  };
-};
+//   return {
+//     props: {
+//       products,
+//     },
+//     revalidate: 60,
+//   };
+// };

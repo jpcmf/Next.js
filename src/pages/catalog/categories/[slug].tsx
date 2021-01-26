@@ -1,11 +1,14 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+
 import Prismic from 'prismic-javascript';
 import { Document } from 'prismic-javascript/types/documents';
 import PrismicDOM from 'prismic-dom';
 
 import { client } from '@/lib/prismic';
+
+import SEO from '@/components/SEO';
 
 import { Container } from '@/styles/pages/top10';
 
@@ -28,6 +31,8 @@ export default function Category({ category, products }: CategoryProps) {
 
   return (
     <Container>
+      <SEO title="Categories" />
+
       <section>
         <h1>{PrismicDOM.RichText.asText(category.data.title)}</h1>
 
